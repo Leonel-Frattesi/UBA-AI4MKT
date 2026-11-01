@@ -8,6 +8,7 @@
   <meta name="description" content="Curso de 7 clases (28 hs) para integrar la IA con criterio en tu trabajo de marketing y comunicación: contexto, conectores, automatización, contenido y agentes, sin programar.">
   <!-- [COMPLETAR: URL definitiva del sitio] -->
   <link rel="canonical" href="https://example.com/">
+  <meta name="theme-color" content="#0e1726">
 
   <!-- Open Graph / redes -->
   <meta property="og:type" content="website">
@@ -19,6 +20,10 @@
   <meta property="og:image" content="https://example.com/og-image.png">
   <meta property="og:image:alt" content="IA aplicada al Marketing y la Comunicación, curso de Formación Profesional de la Facultad de Ciencias Sociales (UBA)">
   <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -45,68 +50,83 @@
        Tokens de diseño: cambiá la paleta acá
        ========================================================== */
     :root {
-      --color-bg: #f7f6f3;
+      /* Base clara */
+      --color-bg: #f6f5f1;
       --color-surface: #ffffff;
-      --color-surface-alt: #efede8;
-      --color-text: #1b1b1a;
-      --color-muted: #55534e;
-      --color-border: #dcd9d2;
-      --color-accent: #23466f;
-      --color-accent-hover: #183453;
-      --color-accent-soft: #e4eaf2;
+      --color-surface-alt: #eeece6;
+      --color-text: #161a22;
+      --color-muted: #505664;
+      --color-border: #dddad2;
+
+      /* Bloques oscuros (hero, proyecto, cierre) */
+      --color-ink: #0e1726;
+      --color-ink-2: #16233a;
+      --color-ink-line: #2a3a57;
+      --color-on-ink: #f3f5f9;
+      --color-on-ink-muted: #aeb8cc;
+
+      /* Acento */
+      --color-accent: #2f4fc4;
+      --color-accent-hover: #233d9c;
+      --color-accent-soft: #e7ecfb;
+      --color-accent-on-ink: #a9bbff;
       --color-on-accent: #ffffff;
-      --color-focus: #c2410c;
+      --color-highlight: #f2b84b;
+      --color-focus: #e2621b;
 
       /* Placeholders [COMPLETAR] */
       --color-ph-bg: #fff3c4;
       --color-ph-text: #5a4100;
       --color-ph-border: #b98a00;
 
-      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --radius: 12px;
-      --radius-sm: 8px;
-      --maxw: 1080px;
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --maxw: 1140px;
       --gutter: 1rem;
-      --section-y: 4rem;
+      --section-y: 4.5rem;
+      --shadow: 0 1px 2px rgba(14, 23, 38, .04), 0 8px 24px -12px rgba(14, 23, 38, .18);
     }
     @media (min-width: 768px) {
-      :root { --gutter: 2rem; --section-y: 6rem; }
+      :root { --gutter: 2rem; --section-y: 7rem; }
     }
 
     /* ==========================================================
        Base
        ========================================================== */
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
     body {
-      margin: 0;
-      background: var(--color-bg);
-      color: var(--color-text);
-      font-family: var(--font-sans);
-      font-size: 1.0625rem;
-      line-height: 1.6;
+      margin: 0; background: var(--color-bg); color: var(--color-text);
+      font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    img { max-width: 100%; display: block; }
+    img, svg { max-width: 100%; display: block; }
     a { color: var(--color-accent); text-underline-offset: 3px; }
     a:hover { color: var(--color-accent-hover); }
-    :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 4px; }
-    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 .75rem; }
-    h1 { font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing: -0.03em; }
-    h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); }
-    h3 { font-size: 1.15rem; }
+    :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
+    h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 .75rem; }
+    h1 { font-size: clamp(2.3rem, 7vw, 4.2rem); font-weight: 800; letter-spacing: -0.035em; }
+    h2 { font-size: clamp(1.75rem, 4.2vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; }
+    h3 { font-size: 1.15rem; font-weight: 700; }
     p { margin: 0 0 1rem; }
-    ul { margin: 0; padding-left: 1.2rem; }
+    ul, ol { margin: 0; padding-left: 1.2rem; }
 
     .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
-    .section { padding: var(--section-y) 0; }
+    .section { padding: var(--section-y) 0; position: relative; }
     .section--alt { background: var(--color-surface-alt); }
     .eyebrow {
-      display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--color-accent); margin-bottom: .75rem;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--color-accent); margin-bottom: 1rem;
     }
-    .lead { font-size: 1.15rem; color: var(--color-muted); max-width: 46rem; }
-    .section-head { margin-bottom: 2.5rem; }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; border-radius: 2px; }
+    .lead { font-size: 1.15rem; color: var(--color-muted); max-width: 44rem; }
+    .section-head { margin-bottom: 3rem; max-width: 50rem; }
+    .grad-text {
+      background: linear-gradient(90deg, var(--color-accent-on-ink), var(--color-highlight));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
 
     .skip-link {
       position: absolute; left: -9999px; top: .5rem; z-index: 100;
@@ -114,207 +134,407 @@
     }
     .skip-link:focus { left: .5rem; color: #fff; }
 
-    /* Placeholder visible */
     .ph {
       background: var(--color-ph-bg); color: var(--color-ph-text);
       border: 1px dashed var(--color-ph-border); border-radius: 4px;
-      padding: 0 .35em; font-weight: 600; font-size: .92em;
+      padding: 0 .35em; font-weight: 700; font-size: .9em;
     }
+
+    .icon { width: 24px; height: 24px; flex: none; }
 
     /* Botones */
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      min-height: 48px; padding: .75rem 1.5rem; border-radius: 999px;
-      font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer;
-      border: 2px solid var(--color-accent); transition: background .15s, color .15s;
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      min-height: 50px; padding: .8rem 1.6rem; border-radius: 999px;
+      font: inherit; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer;
+      border: 2px solid transparent; transition: background .15s, color .15s, transform .15s, box-shadow .15s;
     }
-    .btn--primary { background: var(--color-accent); color: var(--color-on-accent); }
-    .btn--primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); color: var(--color-on-accent); }
-    .btn--ghost { background: transparent; color: var(--color-accent); }
-    .btn--ghost:hover { background: var(--color-accent-soft); }
-    .btn--sm { min-height: 40px; padding: .45rem 1.1rem; font-size: .95rem; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn .icon { width: 18px; height: 18px; }
+    .btn--primary { background: var(--color-accent); color: var(--color-on-accent); box-shadow: 0 8px 20px -8px rgba(47, 79, 196, .7); }
+    .btn--primary:hover { background: var(--color-accent-hover); color: var(--color-on-accent); }
+    .btn--light { background: #fff; color: var(--color-ink); }
+    .btn--light:hover { background: var(--color-accent-soft); color: var(--color-ink); }
+    .btn--outline-light { border-color: rgba(255,255,255,.35); color: var(--color-on-ink); background: transparent; }
+    .btn--outline-light:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,.06); }
+    .btn--ghost { border-color: var(--color-border); color: var(--color-text); background: var(--color-surface); }
+    .btn--ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .btn--sm { min-height: 40px; padding: .45rem 1.1rem; font-size: .92rem; }
 
     /* ==========================================================
-       Header
+       Header (sobre fondo oscuro)
        ========================================================== */
     .site-header {
       position: sticky; top: 0; z-index: 50;
-      background: color-mix(in srgb, var(--color-bg) 92%, transparent);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-ink) 88%, transparent);
+      backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: var(--color-on-ink);
     }
-    .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+    .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; }
     .logo-ph {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex; align-items: center;
       border: 1.5px dashed var(--color-ph-border); background: var(--color-ph-bg); color: var(--color-ph-text);
-      border-radius: var(--radius-sm); padding: .3rem .7rem; font-size: .8rem; font-weight: 700; line-height: 1.25;
+      border-radius: var(--radius-sm); padding: .3rem .7rem; font-size: .78rem; font-weight: 800; line-height: 1.25;
     }
     .site-nav { display: none; }
-    .site-nav ul { list-style: none; padding: 0; display: flex; gap: 1.5rem; }
-    .site-nav a { color: var(--color-text); text-decoration: none; font-size: .95rem; font-weight: 500; }
-    .site-nav a:hover { color: var(--color-accent); text-decoration: underline; }
-    @media (min-width: 900px) { .site-nav { display: block; } }
+    .site-nav ul { list-style: none; padding: 0; display: flex; gap: 1.75rem; }
+    .site-nav a { color: var(--color-on-ink-muted); text-decoration: none; font-size: .93rem; font-weight: 600; }
+    .site-nav a:hover { color: #fff; }
+    @media (min-width: 960px) { .site-nav { display: block; } }
 
     /* ==========================================================
        Hero
        ========================================================== */
-    .hero { padding: 3.5rem 0 4rem; }
-    @media (min-width: 768px) { .hero { padding: 6rem 0 6.5rem; } }
-    .hero__inst { font-size: .95rem; color: var(--color-muted); margin-bottom: 1.25rem; }
-    .hero h1 { max-width: 16ch; }
-    .hero h1 span { color: var(--color-muted); font-weight: 600; display: block; font-size: .62em; letter-spacing: -0.02em; margin-top: .4rem; }
-    .hero__tagline { font-size: clamp(1.1rem, 2.5vw, 1.35rem); max-width: 40rem; color: var(--color-text); margin: 1.25rem 0 2rem; }
-    .facts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; }
-    .facts li {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: 999px; padding: .4rem .9rem; font-size: .95rem; font-weight: 600;
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(60rem 30rem at 85% 10%, rgba(47, 79, 196, .45), transparent 60%),
+        radial-gradient(40rem 25rem at 0% 100%, rgba(242, 184, 75, .14), transparent 60%),
+        var(--color-ink);
+      color: var(--color-on-ink);
+      padding: 3.5rem 0 4rem;
     }
-    .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-    .hero__meta { margin-top: 1.5rem; font-size: .95rem; color: var(--color-muted); }
+    .hero::before { /* grilla sutil */
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%);
+    }
+    @media (min-width: 768px) { .hero { padding: 5.5rem 0 6.5rem; } }
+    .hero .container { position: relative; display: grid; gap: 3rem; align-items: center; }
+    @media (min-width: 960px) { .hero .container { grid-template-columns: 1.15fr .85fr; gap: 3.5rem; } }
+    .hero__inst {
+      display: inline-flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+      font-size: .88rem; font-weight: 600; color: var(--color-on-ink-muted);
+      border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: .35rem .95rem;
+      margin-bottom: 1.5rem; background: rgba(255,255,255,.04);
+    }
+    .hero__inst b { background: var(--color-highlight); color: var(--color-ink); border-radius: 999px; padding: .1rem .6rem; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+    .hero h1 { margin-bottom: 0; }
+    .hero h1 .sub { display: block; font-size: .5em; font-weight: 700; margin-top: .6rem; letter-spacing: -0.02em; }
+    .hero__tagline { font-size: clamp(1.1rem, 2.4vw, 1.3rem); max-width: 36rem; color: var(--color-on-ink-muted); margin: 1.5rem 0 2rem; }
+    .hero__tagline strong { color: var(--color-on-ink); font-weight: 700; }
+    .facts { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0; margin: 0 0 2.25rem; }
+    .facts li { padding: 0 1.25rem; border-left: 1px solid rgba(255,255,255,.18); }
+    .facts li:first-child { padding-left: 0; border-left: 0; }
+    .facts strong { display: block; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.1; color: #fff; }
+    .facts span { font-size: .85rem; color: var(--color-on-ink-muted); font-weight: 600; }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero__meta { margin-top: 1.5rem; font-size: .92rem; color: var(--color-on-ink-muted); }
+
+    /* Diagrama: anatomía de un sistema de IA */
+    .anatomy { width: 100%; max-width: 460px; margin: 0 auto; }
+    .anatomy figcaption { text-align: center; font-size: .85rem; color: var(--color-on-ink-muted); margin-top: .75rem; }
+    .anatomy .ring { fill: none; stroke: rgba(169, 187, 255, .35); stroke-width: 1.5; stroke-dasharray: 4 6; }
+    .anatomy .link { stroke: rgba(169, 187, 255, .4); stroke-width: 1.5; }
+    .anatomy .pulse { fill: var(--color-highlight); }
+    .anatomy .node rect { fill: var(--color-ink-2); stroke: rgba(169, 187, 255, .45); stroke-width: 1.5; }
+    .anatomy .node text { fill: var(--color-on-ink); font: 700 15px var(--font-sans); text-anchor: middle; dominant-baseline: central; }
+    .anatomy .core circle.halo { fill: rgba(47, 79, 196, .25); }
+    .anatomy .core circle.body { fill: url(#coreGrad); }
+    .anatomy .core text { fill: #fff; font: 800 17px var(--font-sans); text-anchor: middle; dominant-baseline: central; }
+    .anatomy .ring-label { fill: var(--color-accent-on-ink); font: 800 11px var(--font-sans); letter-spacing: .14em; text-anchor: middle; }
+    @media (prefers-reduced-motion: no-preference) {
+      .anatomy .pulse { animation: travel 3.2s ease-in-out infinite; }
+      .anatomy .pulse:nth-of-type(2) { animation-delay: .8s; }
+      .anatomy .pulse:nth-of-type(3) { animation-delay: 1.6s; }
+      .anatomy .pulse:nth-of-type(4) { animation-delay: 2.4s; }
+      .anatomy .core .halo { animation: breathe 4s ease-in-out infinite; transform-origin: 220px 215px; }
+      .anatomy .ring { animation: spin 60s linear infinite; transform-origin: 220px 215px; }
+    }
+    @keyframes travel { 0%, 100% { opacity: 0; offset-distance: 0%; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { offset-distance: 100%; } }
+    @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ==========================================================
-       Para quién / logros
+       Para quién es
        ========================================================== */
-    .grid { display: grid; gap: 1rem; }
-    @media (min-width: 640px) { .grid--2 { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .grid--3 { grid-template-columns: repeat(3, 1fr); } .grid--4 { grid-template-columns: repeat(4, 1fr); } }
-    @media (min-width: 640px) and (max-width: 899px) { .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); } }
+    .grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 640px) { .grid--2, .grid--4, .grid--3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .grid--3 { grid-template-columns: repeat(3, 1fr); } .grid--4 { grid-template-columns: repeat(4, 1fr); } }
 
     .card {
       background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius); padding: 1.5rem;
+      border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow);
+      transition: transform .2s, border-color .2s;
     }
+    .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border)); }
     .card h3 { margin-bottom: .5rem; }
-    .card p { color: var(--color-muted); margin: 0; }
-
-    .outcome { position: relative; padding-top: 3.75rem; }
-    .outcome__num {
-      position: absolute; top: 1.4rem; left: 1.5rem;
-      font-size: .85rem; font-weight: 800; color: var(--color-accent);
-      background: var(--color-accent-soft); border-radius: 999px; padding: .1rem .6rem;
+    .card p { color: var(--color-muted); margin: 0; font-size: 1rem; }
+    .icon-badge {
+      width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--color-accent-soft); color: var(--color-accent); margin-bottom: 1.25rem;
     }
+    .icon-badge .icon { width: 26px; height: 26px; }
 
     /* ==========================================================
-       Acordeón del programa
+       Qué vas a lograr
        ========================================================== */
-    .accordion-tools { display: flex; justify-content: flex-end; margin-bottom: .75rem; }
-    .accordion { border-top: 1px solid var(--color-border); }
-    .acc-item { border-bottom: 1px solid var(--color-border); }
+    .outcomes { counter-reset: out; }
+    .outcome { position: relative; overflow: hidden; }
+    .outcome__num {
+      position: absolute; top: .5rem; right: 1rem;
+      font-size: 4.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.05em;
+      color: var(--color-accent-soft); pointer-events: none;
+    }
+    .outcome > *:not(.outcome__num) { position: relative; }
+
+    /* ==========================================================
+       Programa: recorrido + acordeón
+       ========================================================== */
+    .journey { list-style: none; padding: 0; margin: 0 0 2.5rem; position: relative; display: grid; grid-template-columns: repeat(7, 1fr); }
+    .journey::before {
+      content: ""; position: absolute; left: 7%; right: 7%; top: 21px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--color-border), var(--color-accent));
+    }
+    .journey li { text-align: center; position: relative; }
+    .journey a {
+      display: inline-flex; flex-direction: column; align-items: center; gap: .55rem;
+      text-decoration: none; color: var(--color-text); padding: 0 .15rem;
+    }
+    .journey .dot {
+      width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--color-surface); border: 3px solid var(--color-accent); color: var(--color-accent);
+      font-weight: 800; font-size: 1.05rem; transition: background .15s, color .15s, transform .15s;
+    }
+    .journey li:last-child .dot { background: var(--color-accent); color: #fff; }
+    .journey a:hover .dot, .journey a[aria-current="true"] .dot { background: var(--color-accent); color: #fff; transform: scale(1.08); }
+    .journey .lbl { display: none; font-size: .85rem; font-weight: 700; line-height: 1.25; max-width: 9rem; }
+    @media (min-width: 768px) { .journey .lbl { display: block; } }
+    .journey-ends { display: flex; justify-content: space-between; font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted); margin: -1.75rem 0 2.5rem; }
+    @media (min-width: 768px) { .journey-ends { display: none; } }
+
+    .accordion-tools { display: flex; justify-content: flex-end; margin-bottom: .9rem; }
+    .accordion { display: grid; gap: .75rem; }
+    .acc-item {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden; transition: border-color .2s;
+    }
+    .acc-item.is-open { border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border)); }
     .acc-item h3 { margin: 0; font-size: inherit; }
     .acc-trigger {
       all: unset; box-sizing: border-box; width: 100%; cursor: pointer;
       display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center;
-      padding: 1.25rem .25rem;
+      padding: 1.1rem 1.1rem;
     }
-    .acc-trigger:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; border-radius: 6px; }
-    .acc-trigger:hover .acc-title { color: var(--color-accent); }
-    .acc-num {
-      font-size: .8rem; font-weight: 800; color: var(--color-accent); white-space: nowrap;
-      background: var(--color-accent-soft); padding: .2rem .6rem; border-radius: 999px;
+    @media (min-width: 768px) { .acc-trigger { padding: 1.25rem 1.5rem; gap: 1.25rem; } }
+    .acc-trigger:focus-visible { outline: 3px solid var(--color-focus); outline-offset: -3px; border-radius: var(--radius); }
+    .acc-badge {
+      width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
+      background: var(--color-accent-soft); color: var(--color-accent); position: relative;
     }
-    .acc-title { font-size: 1.1rem; font-weight: 700; line-height: 1.35; }
+    .acc-badge .icon { width: 24px; height: 24px; }
+    .acc-item.is-open .acc-badge { background: var(--color-accent); color: #fff; }
+    .acc-num { display: block; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent); }
+    .acc-title { display: block; font-size: 1.12rem; font-weight: 800; line-height: 1.3; margin-top: .1rem; }
     .acc-title small { display: block; font-weight: 500; color: var(--color-muted); font-size: .95rem; margin-top: .15rem; }
-    .acc-icon { width: 24px; height: 24px; flex: none; transition: transform .2s; }
-    .acc-trigger[aria-expanded="true"] .acc-icon { transform: rotate(45deg); }
-    .acc-panel { padding: 0 .25rem 1.5rem; }
-    @media (min-width: 768px) { .acc-panel { padding-left: 5.25rem; } }
-    .acc-panel[hidden] { display: none; }
-    .acc-panel h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .07em; color: var(--color-muted); margin: 0 0 .5rem; }
-    .acc-panel ul { margin-bottom: 1.25rem; }
-    .acc-panel li { margin-bottom: .3rem; }
-    .practice {
-      background: var(--color-accent-soft); border-left: 4px solid var(--color-accent);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 1rem 1.25rem;
+    .acc-icon {
+      width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+      border: 1.5px solid var(--color-border); color: var(--color-text); transition: transform .25s, background .2s;
     }
-    .practice h4 { color: var(--color-accent); }
-    .practice p { margin: 0; }
+    .acc-icon svg { width: 16px; height: 16px; }
+    .acc-trigger[aria-expanded="true"] .acc-icon { transform: rotate(45deg); background: var(--color-accent-soft); border-color: transparent; color: var(--color-accent); }
+    .acc-panel { padding: 0 1.1rem 1.4rem; }
+    @media (min-width: 768px) { .acc-panel { padding: 0 1.5rem 1.75rem calc(1.5rem + 48px + 1.25rem); } }
+    .acc-panel[hidden] { display: none; }
+    .acc-cols { display: grid; gap: 1.25rem; }
+    @media (min-width: 860px) { .acc-cols { grid-template-columns: 1.3fr 1fr; gap: 2rem; } }
+    .acc-panel h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--color-muted); margin: 0 0 .6rem; }
+    .acc-panel ul { list-style: none; padding: 0; }
+    .acc-panel li { position: relative; padding-left: 1.35rem; margin-bottom: .45rem; font-size: 1rem; }
+    .acc-panel li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--color-accent); transform: rotate(45deg); }
+    .practice {
+      background: linear-gradient(135deg, var(--color-accent-soft), color-mix(in srgb, var(--color-accent-soft) 40%, #fff));
+      border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; align-self: start;
+    }
+    .practice h4 { color: var(--color-accent); display: flex; align-items: center; gap: .4rem; }
+    .practice h4 .icon { width: 16px; height: 16px; }
+    .practice p { margin: 0; font-weight: 600; font-size: 1rem; }
 
     /* ==========================================================
        Cursada
        ========================================================== */
-    .specs { display: grid; gap: 1rem; margin: 0; }
-    @media (min-width: 640px) { .specs { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .specs { grid-template-columns: repeat(3, 1fr); } }
-    .specs div { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
-    .specs dt { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--color-muted); margin-bottom: .35rem; }
-    .specs dd { margin: 0; font-weight: 600; }
-    .specs dd small { display: block; font-weight: 400; color: var(--color-muted); font-size: .95rem; margin-top: .25rem; }
-    .project {
-      margin-top: 1.5rem; background: var(--color-text); color: #fff;
-      border-radius: var(--radius); padding: 2rem 1.5rem;
+    .cursada { display: grid; gap: 1.25rem; }
+    @media (min-width: 900px) { .cursada { grid-template-columns: 1.25fr 1fr; } }
+    .panel { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); }
+    .panel h3 { display: flex; align-items: center; gap: .6rem; }
+    .panel h3 .icon { color: var(--color-accent); }
+
+    .weeks { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: .4rem; margin: 1.25rem 0 1rem; }
+    .weeks li {
+      aspect-ratio: 3 / 4; border-radius: 10px; background: var(--color-accent-soft); color: var(--color-accent);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .1rem;
+      font-weight: 800; font-size: 1.05rem; line-height: 1;
     }
-    @media (min-width: 768px) { .project { padding: 2.5rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; } }
-    .project h3 { font-size: 1.4rem; }
-    .project p { color: #e6e4df; }
-    .project .eyebrow { color: #b9cbe3; }
+    .weeks li small { font-size: .62rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; opacity: .85; }
+    .weeks li.final { background: var(--color-accent); color: #fff; }
+    @media (max-width: 479px) { .weeks li:not(.final) small { display: none; } .weeks li { aspect-ratio: 1; } }
+    .panel-note { font-size: .95rem; color: var(--color-muted); margin: 0; }
+    .panel-note strong { color: var(--color-text); }
+
+    .hours { margin-top: 1.25rem; }
+    .hours-bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; margin: .75rem 0 1rem; }
+    .hours-bar span:first-child { flex: 14; background: var(--color-accent); }
+    .hours-bar span:last-child { flex: 14; background: repeating-linear-gradient(45deg, #9eaee6 0 6px, #c4cff3 6px 12px); }
+    .hours-legend { list-style: none; padding: 0; display: grid; gap: .9rem; }
+    .hours-legend li { display: grid; grid-template-columns: 14px 1fr; gap: .75rem; align-items: start; }
+    .hours-legend i { width: 14px; height: 14px; border-radius: 4px; margin-top: .3rem; }
+    .hours-legend li:first-child i { background: var(--color-accent); }
+    .hours-legend li:last-child i { background: repeating-linear-gradient(45deg, #9eaee6 0 3px, #c4cff3 3px 6px); }
+    .hours-legend strong { display: block; }
+    .hours-legend span { color: var(--color-muted); font-size: .95rem; }
+
+    .kv { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0; }
+    .kv li { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-top: 1px solid var(--color-border); font-size: .98rem; }
+    .kv li span:first-child { color: var(--color-muted); font-weight: 600; }
+    .kv li span:last-child { font-weight: 700; text-align: right; }
+
+    .project {
+      margin-top: 1.25rem; position: relative; overflow: hidden;
+      background:
+        radial-gradient(40rem 20rem at 100% 0%, rgba(47, 79, 196, .5), transparent 60%),
+        var(--color-ink);
+      color: var(--color-on-ink); border-radius: calc(var(--radius) + 4px); padding: 2rem 1.5rem;
+    }
+    @media (min-width: 768px) { .project { padding: 3rem; } }
+    .project .eyebrow { color: var(--color-highlight); }
+    .project h3 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; max-width: 26ch; }
+    .project > p { color: var(--color-on-ink-muted); max-width: 46rem; }
+    .project-options { list-style: none; padding: 0; display: grid; gap: 1rem; margin: 2rem 0; }
+    @media (min-width: 640px) { .project-options { grid-template-columns: repeat(3, 1fr); } }
+    .project-options li {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-sm);
+      padding: 1.25rem; display: flex; align-items: center; gap: .9rem; font-weight: 700; font-size: 1.05rem;
+    }
+    .project-options .icon { color: var(--color-accent-on-ink); width: 28px; height: 28px; }
+    .project-options small { display: block; font-weight: 500; font-size: .85rem; color: var(--color-on-ink-muted); }
+    .approve { display: flex; gap: .9rem; align-items: flex-start; border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.5rem; color: var(--color-on-ink-muted); margin: 0; }
+    .approve .icon { color: var(--color-highlight); margin-top: .1rem; }
+    .approve strong { color: var(--color-on-ink); }
 
     /* ==========================================================
        Docente
        ========================================================== */
-    .teacher { display: grid; gap: 2rem; align-items: start; }
-    @media (min-width: 768px) { .teacher { grid-template-columns: 240px 1fr; gap: 3rem; } }
-    .photo-ph {
-      aspect-ratio: 1; width: 100%; max-width: 240px; border-radius: var(--radius);
-      border: 2px dashed var(--color-ph-border); background: var(--color-ph-bg); color: var(--color-ph-text);
-      display: grid; place-items: center; text-align: center; padding: 1rem; font-weight: 700; font-size: .9rem;
+    .teacher {
+      display: grid; gap: 2rem; align-items: center;
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: calc(var(--radius) + 4px);
+      padding: 1.75rem; box-shadow: var(--shadow);
     }
-    .teacher__role { color: var(--color-muted); font-weight: 600; margin-bottom: 1.25rem; }
+    @media (min-width: 768px) { .teacher { grid-template-columns: 260px 1fr; gap: 3rem; padding: 2.5rem; } }
+    .photo-ph {
+      aspect-ratio: 1; width: 100%; max-width: 260px; border-radius: var(--radius);
+      border: 2px dashed var(--color-ph-border); background: var(--color-ph-bg); color: var(--color-ph-text);
+      display: grid; place-items: center; text-align: center; padding: 1rem; font-weight: 800; font-size: .9rem;
+    }
+    .teacher h2 { margin-bottom: .4rem; }
+    .teacher__role {
+      display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+      color: var(--color-accent); font-weight: 700; background: var(--color-accent-soft);
+      border-radius: 999px; padding: .35rem .9rem; font-size: .95rem; margin-bottom: 1.25rem;
+    }
 
     /* ==========================================================
        Requisitos
        ========================================================== */
-    .req-list { list-style: none; padding: 0; display: grid; gap: 1rem; }
+    .req-list { list-style: none; padding: 0; display: grid; gap: 1.25rem; }
     @media (min-width: 768px) { .req-list { grid-template-columns: 1fr 1fr; } }
-    .req-list li { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; }
+    .req-list li { display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; align-items: start; }
+    .req-list .icon-badge { margin: 0; }
+    .req-list li.is-req .icon-badge { background: var(--color-text); color: #fff; }
     .tag {
-      display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-      border-radius: 999px; padding: .15rem .65rem; margin-bottom: .75rem;
+      display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 999px; padding: .2rem .7rem; margin-bottom: .6rem;
     }
     .tag--req { background: var(--color-text); color: #fff; }
     .tag--rec { background: var(--color-accent-soft); color: var(--color-accent); }
-    .req-list p { margin: 0; color: var(--color-muted); }
+    .req-list p { margin: 0; color: var(--color-muted); font-size: 1rem; }
     .req-list strong { color: var(--color-text); }
 
     /* ==========================================================
        FAQ
        ========================================================== */
-    .faq { max-width: 50rem; }
-    .faq details { border-bottom: 1px solid var(--color-border); }
-    .faq details:first-child { border-top: 1px solid var(--color-border); }
+    .faq-wrap { display: grid; gap: 2rem; }
+    @media (min-width: 960px) { .faq-wrap { grid-template-columns: .8fr 1.2fr; gap: 4rem; align-items: start; } .faq-wrap .section-head { position: sticky; top: 100px; } }
+    .faq { display: grid; gap: .75rem; }
+    .faq details { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: border-color .2s; }
+    .faq details[open] { border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border)); }
     .faq summary {
-      cursor: pointer; list-style: none; padding: 1.15rem 2.5rem 1.15rem .25rem; position: relative;
+      cursor: pointer; list-style: none; padding: 1.15rem 3.5rem 1.15rem 1.25rem; position: relative;
       font-weight: 700; font-size: 1.05rem;
     }
+    .faq summary:focus-visible { outline-offset: -3px; }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
-      content: "+"; position: absolute; right: .5rem; top: 50%; transform: translateY(-50%);
-      font-size: 1.5rem; font-weight: 400; color: var(--color-accent);
+      content: "+"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--color-accent-soft); color: var(--color-accent); font-size: 1.2rem; font-weight: 700; line-height: 1;
     }
     .faq details[open] summary::after { content: "–"; }
-    .faq details > div { padding: 0 .25rem 1.25rem; color: var(--color-muted); }
+    .faq details > div { padding: 0 1.25rem 1.25rem; color: var(--color-muted); }
     .faq details > div p:last-child { margin: 0; }
 
     /* ==========================================================
        CTA final y footer
        ========================================================== */
     .cta {
-      background: var(--color-accent); color: var(--color-on-accent); text-align: center;
+      text-align: center; color: var(--color-on-ink); overflow: hidden;
+      background:
+        radial-gradient(50rem 25rem at 50% 120%, rgba(47, 79, 196, .7), transparent 65%),
+        radial-gradient(30rem 15rem at 10% 0%, rgba(242, 184, 75, .12), transparent 60%),
+        var(--color-ink);
     }
-    .cta h2 { color: inherit; max-width: 22ch; margin: 0 auto 1rem; }
-    .cta p { color: #dbe4f0; max-width: 38rem; margin: 0 auto 2rem; }
-    .cta .btn--primary { background: #fff; color: var(--color-accent); border-color: #fff; }
-    .cta .btn--primary:hover { background: var(--color-accent-soft); border-color: var(--color-accent-soft); color: var(--color-accent-hover); }
-    .cta :focus-visible { outline-color: #fff; }
-    .cta__facts { margin-top: 2rem; font-size: .95rem; color: #dbe4f0; }
-    .cta .ph { font-size: .9em; }
+    .cta h2 { color: inherit; max-width: 20ch; margin: 0 auto 1rem; font-size: clamp(2rem, 5vw, 3.2rem); }
+    .cta p { color: var(--color-on-ink-muted); max-width: 36rem; margin: 0 auto 2rem; font-size: 1.1rem; }
+    .cta__btns { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+    .cta__facts { margin-top: 2rem; font-size: .92rem; }
 
-    .site-footer { padding: 2.5rem 0; font-size: .95rem; color: var(--color-muted); }
-    .site-footer .container { display: grid; gap: 1rem; }
+    .site-footer { background: var(--color-ink); color: var(--color-on-ink-muted); padding: 2rem 0; font-size: .92rem; border-top: 1px solid rgba(255,255,255,.08); }
+    .site-footer .container { display: grid; gap: .75rem; }
     @media (min-width: 768px) { .site-footer .container { grid-template-columns: 1fr auto; align-items: center; } }
     .site-footer p { margin: 0; }
+
+    /* Aparición al hacer scroll (solo con JS y sin reduce-motion) */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+      .js .reveal.is-visible { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
   </style>
 </head>
 <body>
+  <!-- Íconos (sprite SVG) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+      <symbol id="i-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+      <symbol id="i-loop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+      <symbol id="i-media" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+      <symbol id="i-agent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/></symbol>
+      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 13l10 5 10-5"/></symbol>
+      <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0V8Z"/><path d="M12 18v4"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></symbol>
+      <symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1Z"/><path d="M17 8a5 5 0 0 1 0 8"/></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 17l.7 1.8 1.8.7-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7L19 17Z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-code-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/><path d="M4 4l16 16"/></symbol>
+    </defs>
+  </svg>
+
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
   <header class="site-header">
@@ -330,6 +550,7 @@
           <li><a href="#faq">Preguntas</a></li>
         </ul>
       </nav>
+      <!-- [COMPLETAR: link de inscripción] -->
       <a class="btn btn--primary btn--sm" href="#inscripcion">Inscribite</a>
     </div>
   </header>
@@ -338,88 +559,132 @@
     <!-- 1. HERO -->
     <section class="hero" aria-labelledby="titulo-curso">
       <div class="container">
-        <p class="hero__inst">Formación Profesional · Facultad de Ciencias Sociales (UBA)</p>
-        <h1 id="titulo-curso">IA aplicada al Marketing y la Comunicación <span>De los modelos a los agentes</span></h1>
-        <p class="hero__tagline">Pasá de usar la IA “a ojo” a integrarla con criterio en tu trabajo: contenido, investigación, reportes y agentes propios, sin escribir una línea de código.</p>
-        <ul class="facts" aria-label="Datos clave del curso">
-          <li>7 clases</li>
-          <li>28 hs</li>
-          <li>Miércoles 19–21 hs</li>
-          <li>Virtual</li>
-        </ul>
-        <div class="hero__cta">
-          <!-- [COMPLETAR: link de inscripción] -->
-          <a class="btn btn--primary" href="#inscripcion">Inscribite</a>
-          <a class="btn btn--ghost" href="#programa">Ver el programa</a>
+        <div>
+          <p class="hero__inst">Formación Profesional · Facultad de Ciencias Sociales (UBA)</p>
+          <h1 id="titulo-curso">IA aplicada al Marketing y la Comunicación <span class="sub grad-text">De los modelos a los agentes</span></h1>
+          <p class="hero__tagline">Pasá de usar la IA “a ojo” a <strong>integrarla con criterio en tu trabajo</strong>: contenido, investigación, reportes y agentes propios, sin escribir una línea de código.</p>
+          <ul class="facts" aria-label="Datos clave del curso">
+            <li><strong>7</strong><span>clases</span></li>
+            <li><strong>28 hs</strong><span>14 en vivo + 14 a tu ritmo</span></li>
+            <li><strong>Mié</strong><span>19 a 21 hs · virtual</span></li>
+          </ul>
+          <div class="hero__cta">
+            <!-- [COMPLETAR: link de inscripción] -->
+            <a class="btn btn--primary" href="#inscripcion">Inscribite <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--outline-light" href="#programa">Ver el programa</a>
+          </div>
+          <p class="hero__meta">Inicio: <span class="ph">[COMPLETAR: fecha de inicio]</span> · Arancel: <span class="ph">[COMPLETAR: arancel]</span></p>
         </div>
-        <p class="hero__meta">Inicio: <span class="ph">[COMPLETAR: fecha de inicio]</span> · Arancel: <span class="ph">[COMPLETAR: arancel]</span></p>
+
+        <figure class="anatomy" style="margin:0">
+          <svg viewBox="0 0 440 430" role="img" aria-labelledby="anatomy-title anatomy-desc">
+            <title id="anatomy-title">Anatomía de un sistema de IA</title>
+            <desc id="anatomy-desc">Diagrama: en el centro, el modelo. A su alrededor, conectados a él, herramientas, contexto, memoria y skills. Todo dentro del harness, el entorno que hace actuar al modelo.</desc>
+            <defs>
+              <radialGradient id="coreGrad" cx="35%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#6f88ff"/>
+                <stop offset="100%" stop-color="#2f4fc4"/>
+              </radialGradient>
+            </defs>
+            <circle class="ring" cx="220" cy="215" r="190"/>
+            <text class="ring-label" x="220" y="16">HARNESS · EL ENTORNO QUE LO HACE ACTUAR</text>
+            <line class="link" x1="220" y1="215" x2="220" y2="75"/>
+            <line class="link" x1="220" y1="215" x2="360" y2="215"/>
+            <line class="link" x1="220" y1="215" x2="220" y2="355"/>
+            <line class="link" x1="220" y1="215" x2="80" y2="215"/>
+            <circle class="pulse" r="4" style="offset-path: path('M220 215 L220 75')"/>
+            <circle class="pulse" r="4" style="offset-path: path('M220 215 L360 215')"/>
+            <circle class="pulse" r="4" style="offset-path: path('M220 215 L220 355')"/>
+            <circle class="pulse" r="4" style="offset-path: path('M220 215 L80 215')"/>
+            <g class="node"><rect x="150" y="53" width="140" height="44" rx="22"/><text x="220" y="75">Herramientas</text></g>
+            <g class="node"><rect x="296" y="193" width="128" height="44" rx="22"/><text x="360" y="215">Contexto</text></g>
+            <g class="node"><rect x="156" y="333" width="128" height="44" rx="22"/><text x="220" y="355">Memoria</text></g>
+            <g class="node"><rect x="16" y="193" width="128" height="44" rx="22"/><text x="80" y="215">Skills</text></g>
+            <g class="core">
+              <circle class="halo" cx="220" cy="215" r="70"/>
+              <circle class="body" cx="220" cy="215" r="52"/>
+              <text x="220" y="215">Modelo</text>
+            </g>
+          </svg>
+          <figcaption>Clase 1: cómo está construido un sistema de IA moderno</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- 2. PARA QUIÉN ES -->
-    <section class="section section--alt" id="para-quien" aria-labelledby="h-para-quien">
+    <section class="section" id="para-quien" aria-labelledby="h-para-quien">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Para quién es</span>
-          <h2 id="h-para-quien">Si trabajás o estudiás marketing y comunicación, este curso es para vos</h2>
+          <h2 id="h-para-quien">Si trabajás o estudiás marketing y comunicación, es para vos</h2>
           <p class="lead">No hace falta experiencia técnica. Sí, conocimientos básicos del área: el curso parte de tareas reales de tu trabajo.</p>
         </div>
         <div class="grid grid--4">
-          <article class="card">
+          <article class="card reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-chart"/></svg></div>
             <h3>Profesionales de marketing</h3>
             <p>Que planifican campañas, producen contenido o miden resultados y quieren sumar la IA a esos procesos de forma consistente.</p>
           </article>
-          <article class="card">
+          <article class="card reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-megaphone"/></svg></div>
             <h3>Profesionales de comunicación</h3>
             <p>Que trabajan con prensa, contenidos o comunicación institucional y necesitan producir, investigar y monitorear con más alcance.</p>
           </article>
-          <article class="card">
+          <article class="card reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-cap"/></svg></div>
             <h3>Estudiantes del área</h3>
-            <p>De marketing o comunicación que quieren llegar al mercado entendiendo cómo funcionan las herramientas que ya están cambiando la profesión.</p>
+            <p>De marketing o comunicación que quieren llegar al mercado entendiendo las herramientas que ya están cambiando la profesión.</p>
           </article>
-          <article class="card">
+          <article class="card reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-spark"/></svg></div>
             <h3>Quienes ya usan IA “a ojo”</h3>
-            <p>Y obtienen resultados dispares. Vas a tener un marco para entender por qué pasa y cómo evaluar cualquier herramienta, más allá de la marca de turno.</p>
+            <p>Y obtienen resultados dispares. Vas a tener un marco para entender por qué pasa y evaluar cualquier herramienta, más allá de la marca de turno.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- 3. QUÉ VAS A LOGRAR -->
-    <section class="section" id="logros" aria-labelledby="h-logros">
+    <section class="section section--alt" id="logros" aria-labelledby="h-logros">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Qué vas a lograr</span>
           <h2 id="h-logros">Al terminar el curso vas a poder…</h2>
         </div>
-        <div class="grid grid--3">
-          <article class="card outcome">
+        <div class="grid grid--3 outcomes">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">01</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-target"/></svg></div>
             <h3>Elegir la herramienta y el modelo adecuados para cada tarea</h3>
             <p>Entendiendo cómo está armado un sistema de IA (modelo, entorno, herramientas, contexto, memoria y skills) para evaluar calidad y costo con criterio propio.</p>
           </article>
-          <article class="card outcome">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">02</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-voice"/></svg></div>
             <h3>Hacer que la IA escriba con la voz de tu marca</h3>
             <p>Con instrucciones, contexto y skills reutilizables que reflejan el estilo y los procesos de tu organización, en lugar de empezar de cero cada vez.</p>
           </article>
-          <article class="card outcome">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">03</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-loop"/></svg></div>
             <h3>Automatizar tareas recurrentes con tus propios datos</h3>
             <p>Conectando la IA con tu correo, documentos y fuentes de datos, por ejemplo para recibir un reporte semanal de competencia o de prensa sin armarlo a mano.</p>
           </article>
-          <article class="card outcome">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">04</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-media"/></svg></div>
             <h3>Producir piezas e investigaciones confiables</h3>
             <p>Texto, imagen, video y voz con consistencia de marca, e investigaciones con fuentes que sabés verificar antes de publicar.</p>
           </article>
-          <article class="card outcome">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">05</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-agent"/></svg></div>
             <h3>Construir tu propio agente o herramienta, sin programar</h3>
             <p>Diseñar un agente simple, una página o un tablero para un caso de marketing o comunicación, usando lenguaje natural.</p>
           </article>
-          <article class="card outcome">
+          <article class="card outcome reveal">
             <span class="outcome__num" aria-hidden="true">06</span>
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-globe"/></svg></div>
             <h3>Anticiparte a cómo la IA cambia el mercado, y medirlo</h3>
             <p>Auditar cómo aparece tu marca en los asistentes de IA (GEO), entender a los agentes como intermediarios de compra y evaluar resultados, riesgos y aspectos éticos y legales.</p>
           </article>
@@ -428,162 +693,203 @@
     </section>
 
     <!-- 4. PROGRAMA -->
-    <section class="section section--alt" id="programa" aria-labelledby="h-programa">
+    <section class="section" id="programa" aria-labelledby="h-programa">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Programa</span>
-          <h2 id="h-programa">7 clases, cada una con una práctica aplicada</h2>
+          <h2 id="h-programa">7 clases, de los modelos a los agentes</h2>
           <p class="lead">Cada clase combina un marco conceptual con práctica guiada. Las herramientas se usan como ejemplos de cada categoría, para que lo que aprendas siga sirviendo aunque los productos cambien.</p>
         </div>
+
+        <nav aria-label="Recorrido del curso" class="reveal">
+          <ol class="journey">
+            <li><a href="#clase-1" data-open="1" aria-label="Clase 1: Fundamentos"><span class="dot">1</span><span class="lbl">Fundamentos</span></a></li>
+            <li><a href="#clase-2" data-open="2" aria-label="Clase 2: Contexto"><span class="dot">2</span><span class="lbl">Contexto</span></a></li>
+            <li><a href="#clase-3" data-open="3" aria-label="Clase 3: IA conectada y automatizada"><span class="dot">3</span><span class="lbl">IA conectada</span></a></li>
+            <li><a href="#clase-4" data-open="4" aria-label="Clase 4: Producción"><span class="dot">4</span><span class="lbl">Producción</span></a></li>
+            <li><a href="#clase-5" data-open="5" aria-label="Clase 5: Construir"><span class="dot">5</span><span class="lbl">Construir</span></a></li>
+            <li><a href="#clase-6" data-open="6" aria-label="Clase 6: El mercado que cambia"><span class="dot">6</span><span class="lbl">El mercado</span></a></li>
+            <li><a href="#clase-7" data-open="7" aria-label="Clase 7: Criterio y proyecto final"><span class="dot">7</span><span class="lbl">Criterio + proyecto</span></a></li>
+          </ol>
+          <div class="journey-ends" aria-hidden="true"><span>Modelos</span><span>Agentes</span></div>
+        </nav>
 
         <div class="accordion-tools">
           <button type="button" class="btn btn--ghost btn--sm" id="acc-toggle-all" hidden>Expandir todas</button>
         </div>
 
         <div class="accordion" id="accordion">
-          <div class="acc-item">
+          <div class="acc-item" id="clase-1">
             <h3><button type="button" class="acc-trigger" id="acc-btn-1" aria-expanded="false" aria-controls="acc-panel-1">
-              <span class="acc-num">Clase 1</span>
-              <span class="acc-title">Fundamentos <small>Cómo funciona la IA hoy</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-brain"/></svg></span>
+              <span><span class="acc-num">Clase 1</span><span class="acc-title">Fundamentos <small>Cómo funciona la IA hoy</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Modelos de lenguaje y multimodales; panorama de modelos actual.</li>
-                <li>Diferencia entre modelo y <em>harness</em> (el entorno que lo hace actuar).</li>
-                <li>Cómo elegir un modelo según la tarea, la calidad y el costo.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Comparás el mismo pedido en distintos asistentes y analizás las diferencias.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Modelos de lenguaje y multimodales; panorama de modelos actual.</li>
+                    <li>Diferencia entre modelo y <em>harness</em> (el entorno que lo hace actuar).</li>
+                    <li>Cómo elegir un modelo según la tarea, la calidad y el costo.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Comparás el mismo pedido en distintos asistentes y analizás las diferencias.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-2">
             <h3><button type="button" class="acc-trigger" id="acc-btn-2" aria-expanded="false" aria-controls="acc-panel-2">
-              <span class="acc-num">Clase 2</span>
-              <span class="acc-title">Contexto <small>Instrucciones, skills y memoria</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-layers"/></svg></span>
+              <span><span class="acc-num">Clase 2</span><span class="acc-title">Contexto <small>Instrucciones, skills y memoria</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Del <em>prompt engineering</em> al <em>context engineering</em>; ventanas de contexto.</li>
-                <li>Instrucciones persistentes y proyectos.</li>
-                <li>Skills como procedimientos empaquetados.</li>
-                <li>Memoria y sus implicancias de privacidad.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Creás un skill de voz de marca y manual de estilo.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Del <em>prompt engineering</em> al <em>context engineering</em>; ventanas de contexto.</li>
+                    <li>Instrucciones persistentes y proyectos.</li>
+                    <li>Skills como procedimientos empaquetados.</li>
+                    <li>Memoria y sus implicancias de privacidad.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Creás un skill de voz de marca y manual de estilo.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-3">
             <h3><button type="button" class="acc-trigger" id="acc-btn-3" aria-expanded="false" aria-controls="acc-panel-3">
-              <span class="acc-num">Clase 3</span>
-              <span class="acc-title">IA conectada y automatizada <small>Herramientas, conectores y flujos de trabajo</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-plug"/></svg></span>
+              <span><span class="acc-num">Clase 3</span><span class="acc-title">IA conectada y automatizada <small>Herramientas, conectores y flujos de trabajo</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Cómo el modelo pasa de responder a actuar mediante herramientas.</li>
-                <li>El estándar Model Context Protocol (MCP).</li>
-                <li>Conectores con correo, documentos, CRM y fuentes de datos.</li>
-                <li>Búsqueda sobre información propia (RAG).</li>
-                <li>Tareas recurrentes y programadas.</li>
-                <li>Flujos fijos (<em>workflows</em>) frente a agentes, y cuándo conviene cada uno.</li>
-                <li>Supervisión humana y permisos.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Armás un asistente conectado a documentos y datos de tu organización que genera de forma automática un reporte semanal de monitoreo de competencia o de prensa.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Cómo el modelo pasa de responder a actuar mediante herramientas.</li>
+                    <li>El estándar Model Context Protocol (MCP).</li>
+                    <li>Conectores con correo, documentos, CRM y fuentes de datos.</li>
+                    <li>Búsqueda sobre información propia (RAG).</li>
+                    <li>Tareas recurrentes y programadas.</li>
+                    <li>Flujos fijos (<em>workflows</em>) frente a agentes, y cuándo conviene cada uno.</li>
+                    <li>Supervisión humana y permisos.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Armás un asistente conectado a documentos y datos de tu organización que genera de forma automática un reporte semanal de monitoreo de competencia o de prensa.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-4">
             <h3><button type="button" class="acc-trigger" id="acc-btn-4" aria-expanded="false" aria-controls="acc-panel-4">
-              <span class="acc-num">Clase 4</span>
-              <span class="acc-title">Producción <small>Contenido multimodal e investigación</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-media"/></svg></span>
+              <span><span class="acc-num">Clase 4</span><span class="acc-title">Producción <small>Contenido multimodal e investigación</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-4" role="region" aria-labelledby="acc-btn-4">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Generación de texto, imagen, video y voz con consistencia de marca.</li>
-                <li>Investigación profunda con fuentes.</li>
-                <li>Verificación, alucinaciones y derechos sobre el contenido generado.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Producís una pieza de campaña multicanal a partir de un brief, con investigación de soporte verificada.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Generación de texto, imagen, video y voz con consistencia de marca.</li>
+                    <li>Investigación profunda con fuentes.</li>
+                    <li>Verificación, alucinaciones y derechos sobre el contenido generado.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Producís una pieza de campaña multicanal a partir de un brief, con investigación de soporte verificada.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-5">
             <h3><button type="button" class="acc-trigger" id="acc-btn-5" aria-expanded="false" aria-controls="acc-panel-5">
-              <span class="acc-num">Clase 5</span>
-              <span class="acc-title">Construir <small>Agentes y herramientas sin programar</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-agent"/></svg></span>
+              <span><span class="acc-num">Clase 5</span><span class="acc-title">Construir <small>Agentes y herramientas sin programar</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-5" role="region" aria-labelledby="acc-btn-5">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Qué es un agente y cómo se diseña.</li>
-                <li>Subagentes y orquestación.</li>
-                <li>Construcción de aplicaciones, páginas y tableros mediante lenguaje natural.</li>
-                <li>Agentes que operan el navegador.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Construís un agente o herramienta simple para un caso de marketing o comunicación.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Qué es un agente y cómo se diseña.</li>
+                    <li>Subagentes y orquestación.</li>
+                    <li>Construcción de aplicaciones, páginas y tableros mediante lenguaje natural.</li>
+                    <li>Agentes que operan el navegador.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Construís un agente o herramienta simple para un caso de marketing o comunicación.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-6">
             <h3><button type="button" class="acc-trigger" id="acc-btn-6" aria-expanded="false" aria-controls="acc-panel-6">
-              <span class="acc-num">Clase 6</span>
-              <span class="acc-title">El mercado que cambia <small>GEO, agentes compradores y publicidad automatizada</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-globe"/></svg></span>
+              <span><span class="acc-num">Clase 6</span><span class="acc-title">El mercado que cambia <small>GEO, agentes compradores y publicidad automatizada</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-6" role="region" aria-labelledby="acc-btn-6">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Optimización para motores generativos (GEO) y visibilidad de marca en respuestas de IA.</li>
-                <li>Agentes como intermediarios de compra.</li>
-                <li>IA dentro de las plataformas publicitarias y el rol del anunciante.</li>
-                <li>Audiencias sintéticas y sus límites.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Auditás la presencia de una marca en asistentes de IA y proponés mejoras.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Optimización para motores generativos (GEO) y visibilidad de marca en respuestas de IA.</li>
+                    <li>Agentes como intermediarios de compra.</li>
+                    <li>IA dentro de las plataformas publicitarias y el rol del anunciante.</li>
+                    <li>Audiencias sintéticas y sus límites.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Auditás la presencia de una marca en asistentes de IA y proponés mejoras.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="acc-item">
+          <div class="acc-item" id="clase-7">
             <h3><button type="button" class="acc-trigger" id="acc-btn-7" aria-expanded="false" aria-controls="acc-panel-7">
-              <span class="acc-num">Clase 7</span>
-              <span class="acc-title">Criterio <small>Medición, calidad y gobernanza</small></span>
-              <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              <span class="acc-badge" aria-hidden="true"><svg class="icon"><use href="#i-shield"/></svg></span>
+              <span><span class="acc-num">Clase 7</span><span class="acc-title">Criterio <small>Medición, calidad y gobernanza</small></span></span>
+              <span class="acc-icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
             </button></h3>
             <div class="acc-panel" id="acc-panel-7" role="region" aria-labelledby="acc-btn-7">
-              <h4>Contenidos</h4>
-              <ul>
-                <li>Cómo medir el impacto de la IA en resultados de negocio.</li>
-                <li>Evaluación sistemática de asistentes y agentes (<em>evals</em>).</li>
-                <li>Privacidad, propiedad intelectual, transparencia y políticas de uso.</li>
-              </ul>
-              <div class="practice">
-                <h4>Práctica</h4>
-                <p>Presentás tu proyecto final y recibís devolución.</p>
+              <div class="acc-cols">
+                <div>
+                  <h4>Contenidos</h4>
+                  <ul>
+                    <li>Cómo medir el impacto de la IA en resultados de negocio.</li>
+                    <li>Evaluación sistemática de asistentes y agentes (<em>evals</em>).</li>
+                    <li>Privacidad, propiedad intelectual, transparencia y políticas de uso.</li>
+                  </ul>
+                </div>
+                <div class="practice">
+                  <h4><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Práctica</h4>
+                  <p>Presentás tu proyecto final y recibís devolución.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -592,66 +898,70 @@
     </section>
 
     <!-- 5. CÓMO ES LA CURSADA -->
-    <section class="section" id="cursada" aria-labelledby="h-cursada">
+    <section class="section section--alt" id="cursada" aria-labelledby="h-cursada">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Cómo es la cursada</span>
           <h2 id="h-cursada">Virtual, en vivo y a tu ritmo</h2>
         </div>
-        <dl class="specs">
-          <div>
-            <dt>Modalidad</dt>
-            <dd>Virtual</dd>
-          </div>
-          <div>
-            <dt>Horario</dt>
-            <dd>Miércoles de 19 a 21 hs</dd>
-          </div>
-          <div>
-            <dt>Duración</dt>
-            <dd>7 clases · 28 hs en total</dd>
-          </div>
-          <div>
-            <dt>Sincrónico</dt>
-            <dd>14 hs de clases en vivo
-              <small>Marco conceptual y práctica guiada.</small></dd>
-          </div>
-          <div>
-            <dt>Asincrónico</dt>
-            <dd>14 hs de trabajo a tu ritmo
-              <small><span class="ph">[COMPLETAR: qué incluye: lecturas, ejercicios, grabaciones…]</span></small></dd>
-          </div>
-          <div>
-            <dt>Inicio</dt>
-            <dd><span class="ph">[COMPLETAR: fecha de inicio]</span></dd>
-          </div>
-        </dl>
 
-        <div class="project">
-          <div>
-            <span class="eyebrow">Proyecto final integrador</span>
-            <h3>Terminás con una solución de IA funcionando para un caso real</h3>
+        <div class="cursada">
+          <div class="panel reveal">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>7 miércoles, de 19 a 21 hs</h3>
+            <ol class="weeks" aria-label="Las 7 clases del curso">
+              <li><small>Clase</small>1</li>
+              <li><small>Clase</small>2</li>
+              <li><small>Clase</small>3</li>
+              <li><small>Clase</small>4</li>
+              <li><small>Clase</small>5</li>
+              <li><small>Clase</small>6</li>
+              <li class="final"><small>Final</small>7</li>
+            </ol>
+            <p class="panel-note">Clases virtuales en vivo. En la <strong>clase 7</strong> presentás tu proyecto final.</p>
+            <ul class="kv">
+              <li><span>Modalidad</span><span>Virtual</span></li>
+              <li><span>Inicio</span><span><span class="ph">[COMPLETAR: fecha de inicio]</span></span></li>
+            </ul>
           </div>
-          <div>
-            <p>De forma individual o en grupo, diseñás e implementás una solución basada en IA (un skill, una automatización o un agente) para un caso real de marketing o comunicación. Lo vas desarrollando a lo largo del curso y lo presentás en la clase 7.</p>
-            <p><strong>Para aprobar:</strong> asistencia mínima del 75 % a las clases sincrónicas, realización de las actividades prácticas y presentación del proyecto final.</p>
+
+          <div class="panel reveal">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>28 horas en total</h3>
+            <div class="hours">
+              <div class="hours-bar" aria-hidden="true"><span></span><span></span></div>
+              <ul class="hours-legend">
+                <li><i aria-hidden="true"></i><div><strong>14 hs sincrónicas</strong><span>Clases en vivo: marco conceptual y práctica guiada.</span></div></li>
+                <li><i aria-hidden="true"></i><div><strong>14 hs asincrónicas</strong><span>A tu ritmo. <span class="ph">[COMPLETAR: qué incluye: lecturas, ejercicios, grabaciones…]</span></span></div></li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <div class="project reveal">
+          <span class="eyebrow">Proyecto final integrador</span>
+          <h3>Terminás con una solución de IA funcionando para un caso real</h3>
+          <p>De forma individual o en grupo, diseñás e implementás una solución basada en IA para un caso real de marketing o comunicación. La vas desarrollando a lo largo del curso y la presentás en la clase 7. Puede ser:</p>
+          <ul class="project-options">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span>Un skill<small>Un procedimiento reutilizable</small></span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-loop"/></svg><span>Una automatización<small>Una tarea que se hace sola</small></span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-agent"/></svg><span>Un agente<small>Un asistente que actúa</small></span></li>
+          </ul>
+          <p class="approve"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Para aprobar:</strong> asistencia mínima del 75 % a las clases sincrónicas, realización de las actividades prácticas y presentación del proyecto final.</span></p>
         </div>
       </div>
     </section>
 
     <!-- 6. DOCENTE -->
-    <section class="section section--alt" id="docente" aria-labelledby="h-docente">
+    <section class="section" id="docente" aria-labelledby="h-docente">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Docente</span>
         </div>
-        <div class="teacher">
+        <div class="teacher reveal">
           <!-- Reemplazar por <img src="..." alt="Retrato de Leo Frattesi"> -->
           <div class="photo-ph" role="img" aria-label="Espacio reservado para la foto del docente">[COMPLETAR: foto]</div>
           <div>
             <h2 id="h-docente">Leo Frattesi</h2>
-            <p class="teacher__role">Managing Director de Content, Strategy &amp; Analytics en Havas Media Network</p>
+            <p class="teacher__role">Managing Director de Content, Strategy &amp; Analytics · Havas Media Network</p>
             <p><span class="ph">[COMPLETAR: bio breve, 2 o 3 líneas]</span></p>
           </div>
         </div>
@@ -659,33 +969,40 @@
     </section>
 
     <!-- 7. REQUISITOS -->
-    <section class="section" id="requisitos" aria-labelledby="h-requisitos">
+    <section class="section section--alt" id="requisitos" aria-labelledby="h-requisitos">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Requisitos</span>
           <h2 id="h-requisitos">Qué necesitás para cursar</h2>
         </div>
         <ul class="req-list">
-          <li>
-            <span class="tag tag--req">Requisito</span>
-            <p><strong>Conocimientos básicos de marketing y/o comunicación</strong>, por formación o experiencia profesional. No necesitás saber programar.</p>
+          <li class="card is-req reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div>
+            <div>
+              <span class="tag tag--req">Requisito</span>
+              <p><strong>Conocimientos básicos de marketing y/o comunicación</strong>, por formación o experiencia profesional. No necesitás saber programar.</p>
+            </div>
           </li>
-          <li>
-            <span class="tag tag--rec">Recomendado, no obligatorio</span>
-            <p><strong>Una suscripción paga a ChatGPT (Plus o superior) o a Claude (Pro o superior)</strong> para aprovechar el curso al máximo. Las funciones exclusivas de las versiones pagas (conectores, tareas programadas, agentes e investigación profunda) se muestran en clase, así que podés cursar sin ella.</p>
+          <li class="card reveal">
+            <div class="icon-badge" aria-hidden="true"><svg class="icon"><use href="#i-spark"/></svg></div>
+            <div>
+              <span class="tag tag--rec">Recomendado, no obligatorio</span>
+              <p><strong>Una suscripción paga a ChatGPT (Plus o superior) o a Claude (Pro o superior)</strong> para aprovechar el curso al máximo. Las funciones exclusivas de las versiones pagas (conectores, tareas programadas, agentes e investigación profunda) se muestran en clase, así que podés cursar sin ella.</p>
+            </div>
           </li>
         </ul>
       </div>
     </section>
 
     <!-- 8. FAQ -->
-    <section class="section section--alt" id="faq" aria-labelledby="h-faq">
-      <div class="container">
-        <div class="section-head">
+    <section class="section" id="faq" aria-labelledby="h-faq">
+      <div class="container faq-wrap">
+        <div class="section-head reveal">
           <span class="eyebrow">Preguntas frecuentes</span>
           <h2 id="h-faq">Lo que más nos preguntan</h2>
+          <p class="lead">¿Tenés otra duda? Escribinos a <span class="ph">[COMPLETAR: contacto]</span>.</p>
         </div>
-        <div class="faq">
+        <div class="faq reveal">
           <details>
             <summary>¿Necesito saber programar?</summary>
             <div><p>No. Todos los ejercicios se hacen sin programar, incluso cuando construís agentes y herramientas en la clase 5: se arman con lenguaje natural.</p></div>
@@ -716,11 +1033,14 @@
 
     <!-- 9. CIERRE -->
     <section class="section cta" id="inscripcion" aria-labelledby="h-cta">
-      <div class="container">
-        <h2 id="h-cta">Empezá a usar la IA con criterio en tu trabajo</h2>
+      <div class="container reveal">
+        <h2 id="h-cta">Empezá a usar la IA <span class="grad-text">con criterio</span> en tu trabajo</h2>
         <p>7 clases para pasar de los modelos a los agentes, con un proyecto propio funcionando al final.</p>
-        <!-- [COMPLETAR: link de inscripción] -->
-        <a class="btn btn--primary" href="#inscripcion">Inscribite</a>
+        <div class="cta__btns">
+          <!-- [COMPLETAR: link de inscripción] -->
+          <a class="btn btn--light" href="#inscripcion">Inscribite <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--outline-light" href="#programa">Revisar el programa</a>
+        </div>
         <p class="cta__facts">Inicio: <span class="ph">[COMPLETAR: fecha de inicio]</span> · Arancel: <span class="ph">[COMPLETAR: arancel]</span></p>
       </div>
     </section>
@@ -734,6 +1054,8 @@
   </footer>
 
   <script>
+    document.documentElement.classList.add('js');
+
     // Acordeón accesible (patrón WAI-ARIA): Enter/Espacio abre y cierra,
     // flechas arriba/abajo navegan entre clases, Inicio/Fin van a la primera/última.
     // Sin JS, todos los paneles quedan visibles.
@@ -744,6 +1066,7 @@
       function setOpen(btn, open) {
         btn.setAttribute('aria-expanded', String(open));
         document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+        btn.closest('.acc-item').classList.toggle('is-open', open);
       }
       function syncToggleAll() {
         const allOpen = triggers.every(b => b.getAttribute('aria-expanded') === 'true');
@@ -773,6 +1096,28 @@
         syncToggleAll();
       });
       syncToggleAll();
+
+      // Recorrido: al elegir una clase, se abre en el acordeón
+      document.querySelectorAll('.journey a').forEach(a => {
+        a.addEventListener('click', () => {
+          const btn = document.getElementById('acc-btn-' + a.dataset.open);
+          setOpen(btn, true);
+          syncToggleAll();
+          document.querySelectorAll('.journey a').forEach(x => x.removeAttribute('aria-current'));
+          a.setAttribute('aria-current', 'true');
+          setTimeout(() => btn.focus({ preventScroll: true }), 0);
+        });
+      });
+    })();
+
+    // Aparición suave al hacer scroll
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-visible')); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(el => io.observe(el));
     })();
   </script>
 </body>
