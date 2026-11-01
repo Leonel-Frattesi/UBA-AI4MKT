@@ -223,6 +223,10 @@
     .facts li:first-child { padding-left: 0; border-left: 0; }
     .facts strong { display: block; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.1; color: #fff; }
     .facts span { font-size: .85rem; color: var(--color-on-ink-muted); font-weight: 600; }
+    .hero__by { display: flex; align-items: center; gap: .85rem; margin: 0 0 2rem; }
+    .hero__by img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--color-accent-on-ink); object-fit: cover; }
+    .hero__by span { font-size: .92rem; color: var(--color-on-ink-muted); line-height: 1.35; }
+    .hero__by strong { display: block; color: var(--color-on-ink); font-size: 1rem; }
     .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; }
     .hero__meta { margin-top: 1.5rem; font-size: .92rem; color: var(--color-on-ink-muted); }
 
@@ -424,17 +428,21 @@
       background: var(--color-surface); border: 1px solid var(--color-border); border-radius: calc(var(--radius) + 4px);
       padding: 1.75rem; box-shadow: var(--shadow);
     }
-    @media (min-width: 768px) { .teacher { grid-template-columns: 260px 1fr; gap: 3rem; padding: 2.5rem; } }
-    .photo-ph {
-      aspect-ratio: 1; width: 100%; max-width: 260px; border-radius: var(--radius);
-      border: 2px dashed var(--color-ph-border); background: var(--color-ph-bg); color: var(--color-ph-text);
-      display: grid; place-items: center; text-align: center; padding: 1rem; font-weight: 800; font-size: .9rem;
+    @media (min-width: 768px) { .teacher__photo { max-width: 280px; } .teacher { grid-template-columns: 280px 1fr; gap: 3.5rem; padding: 2.5rem 3rem 2.5rem 2.5rem; } }
+    .teacher__photo { position: relative; max-width: 230px; width: 100%; margin: 0 auto; }
+    .teacher__photo::before { /* bloque decorativo detrás de la foto */
+      content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--color-accent), var(--color-ink));
+    }
+    .teacher__photo img {
+      position: relative; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%;
+      border-radius: var(--radius); box-shadow: var(--shadow);
     }
     .teacher h2 { margin-bottom: .4rem; }
     .teacher__role {
       display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap;
       color: var(--color-accent); font-weight: 700; background: var(--color-accent-soft);
-      border-radius: 999px; padding: .35rem .9rem; font-size: .95rem; margin-bottom: 1.25rem;
+      border-radius: 10px; padding: .4rem .85rem; font-size: .95rem; margin-bottom: 1.25rem;
     }
 
     /* ==========================================================
@@ -568,6 +576,10 @@
             <li><strong>28 hs</strong><span>14 en vivo + 14 a tu ritmo</span></li>
             <li><strong>Mié</strong><span>19 a 21 hs · virtual</span></li>
           </ul>
+          <p class="hero__by">
+            <img src="assets/leo-frattesi-avatar.jpg" alt="" width="52" height="52">
+            <span><strong>Dictado por Leo Frattesi</strong>Managing Director de Content, Strategy &amp; Analytics · Havas Media Network</span>
+          </p>
           <div class="hero__cta">
             <!-- [COMPLETAR: link de inscripción] -->
             <a class="btn btn--primary" href="#inscripcion">Inscribite <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -957,8 +969,9 @@
           <span class="eyebrow">Docente</span>
         </div>
         <div class="teacher reveal">
-          <!-- Reemplazar por <img src="..." alt="Retrato de Leo Frattesi"> -->
-          <div class="photo-ph" role="img" aria-label="Espacio reservado para la foto del docente">[COMPLETAR: foto]</div>
+          <div class="teacher__photo">
+            <img src="assets/leo-frattesi.jpg" alt="Retrato de Leo Frattesi, docente del curso" width="720" height="960" loading="lazy">
+          </div>
           <div>
             <h2 id="h-docente">Leo Frattesi</h2>
             <p class="teacher__role">Managing Director de Content, Strategy &amp; Analytics · Havas Media Network</p>
